@@ -18,7 +18,7 @@ const Navbar = () => {
            <div className='menu-link'>
              <ul>
                 <li>
-                    <a href='#'  target='#'>Home</a>
+                    <a href='#'  target='#' className='text-xl font-bold'>Home</a>
                 </li>
                 <li>
                     <a href='#'  target='#'>About</a>
