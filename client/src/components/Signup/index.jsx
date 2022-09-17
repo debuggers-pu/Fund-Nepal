@@ -21,7 +21,7 @@ const Signup = () => {
 		e.preventDefault();
 		try {
 			const url = "http://localhost:8080/api/users";
-			const { data: res } = await axios.post(url, data);
+			const res = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
 		} catch (error) {
@@ -87,7 +87,7 @@ const Signup = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing Up
+							Sign Up
 						</button>
 					</form>
 				</div>

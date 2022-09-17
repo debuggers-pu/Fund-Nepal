@@ -30,7 +30,7 @@ const Login = () => {
 	};
 
 	return (
-		<div className={styles.login_container}>
+		<div className="bg-orange">
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ const Login = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sing In
+							Sign In
 						</button>
 					</form>
 				</div>
