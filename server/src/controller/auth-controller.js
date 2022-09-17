@@ -7,42 +7,38 @@ class AuthController {
        const { email , password} = req.body;
       try {
         const user = await User.findOne({email : email});
-        if(!user){
-              res.status(500).json({
-                message : "User not found"
-              })
-              return;
-        }
-         
-        const isPassword = await user.authenticate(password)
-       
-        if(isPassword && user){
+        if(user){
+          if(user.authenticate(password) && user){
             const token = jwt.sign({
                 id :user._id,
                 email :user.email,
            }, process.env.JWTPRIVATEKEY, {
              expiresIn : '1hr'
            })
-            res.cookie("token", token, {
-                expires : new Date(Date.now() + 25892000000),
-                httpOnly : true,
-            })
+           res.cookie("token", token, {
+            expires : new Date(Date.now() + 25892000000),
+            httpOnly : true,
+        })
             res.status(200).json({
                 message : "User logged in successfully",
                 user
             })
+           
+          }
         }
-      } catch (error) {
+        else {
+          res.status(500).json({
+            message : "User not found"
+          })
+          return;
+        }
+      } 
+      catch (error) {
         res.status(404).json({
             message : error.message,
 
          })   
       }
-        console.log("Login ");
-        res.status(200).json({
-            message : "Login route"
-        })
-
     }
 
 
