@@ -6,12 +6,16 @@ const connection = require("./db")
 const authRouter = require("./src/routes/auth-route")
 const morgan = require("morgan")
 
-app.use(cors());
+
+app.use(cors({
+    credentials : true,
+    origin : ['http://localhost:3000']
+}));
+connection();
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
 app.use(morgan('dev'))
-
-connection();
+app.use(express.static("uploads"));
 
 app.get("/", (req, res) => {
     res.json({message : 'API RUNNING'})

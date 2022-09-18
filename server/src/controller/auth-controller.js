@@ -44,7 +44,8 @@ class AuthController {
 
 
     async signup(req, res) {
-        const { email , password , fullName, address, contactNumber , profilepic} = req.body;
+        const { email , password , fullName, address, contactNumber } = req.body;
+        const image = req.file?.path;
         try {
             const user = await User.findOne({email : email});
             if(user){
@@ -59,7 +60,7 @@ class AuthController {
                             fullName,
                             address,
                             contactNumber,
-                            profilepic
+                            profilepic : image
             })
             
               const data = await  _user.save()

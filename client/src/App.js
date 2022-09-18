@@ -1,22 +1,28 @@
 import "./App.css";
-import { Route, Routes, Navigate } from 'react-router-dom';
-import Main from "./components/Main";
+import { Route, Routes} from 'react-router-dom';
 import Login from "./components/Login";
-import Signup from "./components/Signup";
-import NavBar from "./components/NavBar";
+import Signup from "./components/Signup"
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import {Toaster} from "react-hot-toast";
 
 
 function App() {
-	const user = localStorage.getItem("token");
 	return (
 		<>
-			<NavBar />
-			<Routes>
-				{user && <Route path="/" exact element={<Main />} />}
-				<Route path="/signup" exact element={<Signup />} />
-				<Route path="/login" exact element={<Login />} />
-				<Route path="/" element={<Navigate replace to="/login" />} />
+		<Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "font-bold text-sm",
+        }}
+      />
 
+			<Navbar />
+			<Routes>
+				<Route path ="/" element={<HomePage/>}/>
+				<Route path="/auth/login"  element={<Login/>}/>
+				<Route path="/auth/signup" element={<Signup/>}/>
 			</Routes>
 		</>
 	);
@@ -24,3 +30,4 @@ function App() {
 
 
 export default App;
+ 
