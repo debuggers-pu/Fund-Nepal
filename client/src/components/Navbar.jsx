@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import Searchbox from './shared/Searchbox'
 
+
 const Navbar = () => {
   return (
     <div className='flex justify-between items-center bg-primaryColor text-white py-2 px-10 '>

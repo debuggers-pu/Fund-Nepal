@@ -1,10 +1,10 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const baseURL = "https://localhost:5000/api"
+const baseURL = "http://localhost:5000/api/"
 const api = axios.create({
     baseURL : baseURL,
-    withCredentials : true
+    withCredentials : true,
 });
 
 
@@ -15,18 +15,18 @@ api.interceptors.response.use(null , (error) => {
     }
 })
 
-export const login = async (data) => api.post('/auth/login', data, {
+export const login = async (data) => api.post('auth/login', data, {
     headers : {
-        "content-type" : "application/json"
+        "Content-type" : "application/json",
     }
-})
+});
 
 
-export const signup = async (data) => api.post("/auth/signup", data, {
+export const signup = async (data) => api.post('auth/signup', data, {
     headers : {
-        "content-type" : "multipart/form"
+        "Content-type" : "multipart/form-data",
     }
-})
+});
 
 export default api;
 

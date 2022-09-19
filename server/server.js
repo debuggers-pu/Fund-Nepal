@@ -7,15 +7,17 @@ const authRouter = require("./src/routes/auth-route")
 const morgan = require("morgan")
 
 
-app.use(cors({
-    credentials : true,
-    origin : ['http://localhost:3000']
-}));
+const corsOption = {
+    credentials: true,
+    origin: ["http://localhost:3000"],
+  
+  };
 connection();
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
 app.use(morgan('dev'))
 app.use(express.static("uploads"));
+app.use(cors(corsOption))
 
 app.get("/", (req, res) => {
     res.json({message : 'API RUNNING'})
@@ -24,5 +26,5 @@ app.use("/api/auth", authRouter);
 
 
 app.listen(5000, ()=> {
-    console.log("Server running in port5000")
+    console.log("Server running in port 5000")
 })

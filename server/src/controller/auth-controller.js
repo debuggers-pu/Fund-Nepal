@@ -77,6 +77,7 @@ class AuthController {
                 httpOnly : true,
             })
                 res.status(200).json({
+                  message : "User Registered succkessfully.",
                     data,
                     token
                 })

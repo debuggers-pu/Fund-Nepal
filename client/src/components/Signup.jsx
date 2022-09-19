@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputField from "./shared/Inputfield";
 import toast from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signup } from "../axios";
 import { useDispatch } from "react-redux"
 
@@ -9,6 +9,7 @@ import { setAuthenticated, setUser} from "../redux/slices/authSlice"
 
 const Signup = ({ onClick }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [credentials, setCredentials] = useState({});
 
   const onChangeHandler = (name, e) => {
@@ -32,8 +33,9 @@ const Signup = ({ onClick }) => {
         const res = await signup(credentials);
         if (res) {
           dispatch(setAuthenticated(true));
-          dispatch(setUser(res.data.userData));
+          dispatch(setUser(res.data));
           toast.success(res.data.message);
+          navigate("/")
         }
       } else {
         toast.error("Please fill all the fields");
