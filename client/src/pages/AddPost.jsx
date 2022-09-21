@@ -1,59 +1,51 @@
 import React from "react";
-import InputField from "./shared/Inputfield";
+import InputField from "../components/shared/Inputfield";
 import toast from "react-hot-toast";
 
 function AddPost() {
 	return (
-		<div>
-			<div class="w-full max-w-xs">
-				<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-					<div class="mb-4">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="username"
-						>
-							Username
-						</label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							id="username"
-							type="text"
-							placeholder="Username"
-						/>
+		<div className="flex content-">
+			<div className="flex justify-center items-center">
+				<div className="m-auto p-10 mt-20 border-2 shadow-sm rounded-md">
+					<h1 className="font-bold text-2xl mb-4 text-center">
+						<span className="text-primaryColor italic">Create Story</span>
+					</h1>
+					<InputField
+						placeholder={"Enter your Title"}
+						name="title"
+						type="text"
+					/>
+					<InputField
+						placeholder={"Enter your description"}
+						name="description"
+						type="text"
+					/>
+					<InputField
+						placeholder={"Enter your Category"}
+						name="category"
+						type="text"
+					/>
+					<InputField
+						placeholder={"Enter Target Amount"}
+						name="amount"
+						type="number"
+					/>
+					<InputField
+						placeholder={"Enter Comment"}
+						name="comment"
+						type="text"
+						className="block p-4 w-full"
+					/>
+					<InputField
+						placeholder={"Upload your photo."}
+						name="phuto"
+						type="file"
+						id="phuto"
+					/>
+					<div className="text-sm font-bold px-4 py-2 mb-2 rounded-md bg-black text-white text-center hover:opacity-75 cursor-pointer">
+						Post
 					</div>
-					<div class="mb-6">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="password"
-						>
-							Password
-						</label>
-						<input
-							class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-							id="password"
-							type="password"
-							placeholder="******************"
-						/>
-						<p class="text-red-500 text-xs italic">Please choose a password.</p>
-					</div>
-					<div class="flex items-center justify-between">
-						<button
-							class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							type="button"
-						>
-							Sign In
-						</button>
-						<a
-							class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-							href="#"
-						>
-							Forgot Password?
-						</a>
-					</div>
-				</form>
-				<p class="text-center text-gray-500 text-xs">
-					&copy;2020 Acme Corp. All rights reserved.
-				</p>
+				</div>
 			</div>
 		</div>
 	);
