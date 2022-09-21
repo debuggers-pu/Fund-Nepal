@@ -37,5 +37,3 @@ const Navbar = () => {
 export default Navbar;
 
 // http://localhost:5000/1663581475437-IMG_20201008_085425.jpg
-
-
