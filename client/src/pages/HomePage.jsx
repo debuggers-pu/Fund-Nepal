@@ -1,14 +1,16 @@
 import React from "react";
-import AddPost from "./AddPost";
 import HeroSection from "./HeroSection";
 import Services from "./Services";
+import Footer from "./Footer";
+import Quill from "../components/Quill";
 
 const HomePage = () => {
 	return (
 		<div>
 			<HeroSection />
 			<Services />
-			<AddPost />
+			<Quill />
+			<Footer />
 		</div>
 	);
 };

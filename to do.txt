@@ -1,0 +1,5 @@
+1. create add post modal
+2. fetch all post and show post detail page
+3. img jani wala
+4. Payment gateway integration
+5. like and comment

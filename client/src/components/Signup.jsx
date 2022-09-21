@@ -33,7 +33,7 @@ const Signup = ({ onClick }) => {
         const res = await signup(credentials);
         if (res) {
           dispatch(setAuthenticated(true));
-          dispatch(setUser(res.data));
+          dispatch(setUser(res.data.user));
           toast.success(res.data.message);
           navigate("/")
         }
@@ -78,7 +78,7 @@ const Signup = ({ onClick }) => {
        <InputField
         placeholder={"Enter your phone number"}
         name="contactNumber"
-        type={"number"}
+        type={"text"}
         onChange={(e) => onChangeHandler("contactNumber", e)}
       />
       <InputField

@@ -4,7 +4,11 @@ const authSlice = createSlice({
   name: "auth",
   initialState: {
     isauthenticated: false,
-    user: null,
+    user:{
+      user :{
+        profilepic :" "
+      }
+    },
   },
   reducers: {
     setAuthenticated: (state, action) => {
@@ -17,7 +21,6 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { setAuthenticated, setUser, setUserDetails, setRole } =
-  authSlice.actions;
+export const { setAuthenticated, setUser } = authSlice.actions;
 
 
