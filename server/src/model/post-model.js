@@ -33,8 +33,8 @@ const userSchema = mongoose.Schema(
         map: [{userId : { type : mongoose.Schema.Types.ObjectId , ref:"User" }, value: [String]}],
       },
     likes: {
-        type: String,
-        
+        type: Number,
+        default:0
       },
 
   },
