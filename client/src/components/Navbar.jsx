@@ -5,7 +5,7 @@ import Searchbox from './shared/Searchbox'
 
 const Navbar = () => {
   return (
-    <div className='flex justify-between items-center bg-primaryColor text-white py-2 px-10 '>
+    <div className='flex justify-between items-center bg-green-500 text-white py-2 px-10 '>
         <h1 className='font-bold text-xl '>Fund Nepal</h1>
         <Searchbox/>
        <NavLink to='/auth/login'>
