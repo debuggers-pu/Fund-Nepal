@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import Searchbox from "./shared/Searchbox";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated, setUser } from "../redux/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuthenticated, setUser } from "../redux/slices/authSlice";
 
 const Navbar = () => {
 	const isAuthenticated = useSelector(state => state.auth.isauthenticated);
@@ -47,5 +49,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// http://localhost:5000/1663581475437-IMG_20201008_085425.jpg
 
 // http://localhost:5000/1663581475437-IMG_20201008_085425.jpg
