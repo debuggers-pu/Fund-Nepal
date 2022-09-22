@@ -1,7 +1,6 @@
 import React from "react";
 import HeroSection from "./HeroSection";
 import Services from "./Services";
-import Footer from "./Footer";
 import CreatePost from "./CreatePost";
 
 const HomePage = () => {
@@ -9,8 +8,7 @@ const HomePage = () => {
     <div>
       <HeroSection />
       <Services />
-      <Footer />
-      <CreatePost />
+      {/* <CreatePost /> */}
     </div>
   );
 };
