@@ -1,7 +1,4 @@
 const Post = require("../model/post-model");
-const router = require("express").Router();
-const jwt = require("jsonwebtoken");
-const { response } = require("express");
 
 class PostController {
 	//Adding post
