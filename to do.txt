@@ -3,5 +3,6 @@
 3. img jani wala
 4. Payment gateway integration
 5. like and comment
+6.about us and contact page
 
 
