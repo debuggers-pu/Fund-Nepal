@@ -19,19 +19,10 @@ const Navbar = () => {
 		dispatch(setPostModal(true));
 	};
 	return (
-		<div className="flex justify-between items-center bg-green-500 text-white py-4 px-10 ">
-			<div class="mb-6 md:mb-0">
-				<a href="/" class="flex items-center">
-					<img
-						src="https://flowbite.com/docs/images/logo.svg"
-						class="mr-3 h-8"
-						alt="FlowBite Logo"
-					/>
-					<span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-						FundNepal
-					</span>
-				</a>
-			</div>
+		<div className="flex justify-between items-center bg-green-500 text-white py-2 px-10 ">
+			<a href="/">
+				<h1 className="font-bold text-xl ">Fund Nepal</h1>
+			</a>
 			<Searchbox />
 			{isAuthenticated === true ? (
 				<div className="flex items-center space-x-2">
