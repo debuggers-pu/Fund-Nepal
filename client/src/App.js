@@ -4,29 +4,30 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
-import HeroSection from "./pages/HeroSection";
 import { Toaster } from "react-hot-toast";
-import Services from "./pages/Services";
+import CreatePost from "./pages/CreatePost";
+import { useSelector } from "react-redux";
 
 function App() {
-	return (
-		<>
-			<Toaster
-				position="top-right"
-				reverseOrder={false}
-				toastOptions={{
-					className: "font-bold text-sm",
-				}}
-			/>
-
-			<Navbar />
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/auth/login" element={<Login />} />
-				<Route path="/auth/signup" element={<Signup />} />
-			</Routes>
-		</>
-	);
+  const modal = useSelector((state) => state.modal.postModal);
+  return (
+    <>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        toastOptions={{
+          className: "font-bold text-sm",
+        }}
+      />
+      {modal ? <CreatePost /> : ""}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/signup" element={<Signup />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
