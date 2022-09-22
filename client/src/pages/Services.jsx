@@ -1,65 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { getpost } from "../axios";
 
 const Services = () => {
+	const [posts, setPosts] = useState([]);
+	useEffect(() => {
+		const getposts = async () => {
+			const res = await getpost();
+			if (res.data) {
+				setPosts(res.data.posts);
+				console.log(res.data.posts);
+			}
+		};
+		getposts();
+
+		return () => {};
+	}, []);
+
 	return (
-		<div class="blogs__wraper  py-20 px-20">
-			<div class="flex justify-between items-center ">
-				<div class="blogs bg-white mr-5 ">
-					<img
-						src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-						alt="services2"
-					/>
-					<div class="p-5">
-						<h1 class="text-2xl font-bold text-green-800 py-2">Guide</h1>
-						<p class="bg-white text-sm text-black">
-							The Quick-Start Guide To Recurring Giving
-						</p>
-						<a
-							href="#"
-							class="inline-block px-3 py-2 mt-4 font-semibold text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400"
-						>
-							Read More
-						</a>
-					</div>
-				</div>
+		<div className="post_wrapper py-25 px-20">
+			<div className="grid grid-cols-3 gap-2">
+				{posts.map((data, key) => (
+					//Card
+					<div className="border-2 rounded-lg bg-gray-100 mr-5 mt-5 mb-5 ">
+						<img
+							src={`http://localhost:5000/${data.image.split("\\")[1]}`}
+							alt="services2"
+						/>
+						<div className="p-5">
+							<h3 className="text-2xl font-bold text-green-800 py-2">
+								{data.title.length > 30
+									? data.title.slice(0, 30).concat("....")
+									: data.title}
+							</h3>
+							<p className="bg-gray-100 text-sm text-black">
+								{data.description.length > 250
+									? data.description.slice(0, 250).concat("........")
+									: data.description}
+							</p>
 
-				<div class="blogs bg-white mr-5">
-					<img
-						src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-						alt="services2"
-					/>
-					<div class="p-5">
-						<h1 class="text-2xl font-bold text-green-800 py-2">Templates</h1>
-						<p class="bg-white text-sm text-black">
-							Donor Retention Email Templates
-						</p>
-						<a
-							href="#"
-							class="inline-block px-3 py-2 mt-4 font-semibold text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400"
-						>
-							Read More
-						</a>
+							<NavLink
+								to={`/${data._id}`}
+								className="inline-block px-3 py-2 mt-4 font-semibold text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400"
+							>
+								Read More
+							</NavLink>
+						</div>
 					</div>
-				</div>
-
-				<div class="blogs bg-white mr-5">
-					<img
-						src="https://images.unsplash.com/photo-1489396160836-2c99c977e970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-						alt="services2"
-					/>
-					<div class="p-5">
-						<h1 class="text-2xl font-bold text-green-800 py-2">Checklist</h1>
-						<p class="bg-white text-sm text-black">
-							The Nonprofit Digital Marketing Checklist
-						</p>
-						<a
-							href="#"
-							class="inline-block px-3 py-2 mt-4 font-semibold text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400"
-						>
-							Read More
-						</a>
-					</div>
-				</div>
+				))}
 			</div>
 		</div>
 	);

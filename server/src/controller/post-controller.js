@@ -4,16 +4,9 @@ class PostController {
 	//Adding post
 	async addpost(req, res) {
 		try {
-			const {
-				userid,
-				title,
-				description,
-				image,
-				category,
-				amount,
-				comment,
-				likes,
-			} = req.body;
+			const { userid, title, description, category, amount, comment, likes } =
+				req.body;
+			const image = req.file?.path;
 			const _post = new Post({
 				title,
 				description,
@@ -46,7 +39,7 @@ class PostController {
 	async getpost(req, res) {
 		try {
 			const posts = await Post.find();
-			res.json(posts);
+			res.status(200).json({ posts });
 		} catch (error) {
 			console.error(error.message);
 			res.status(500).send("Some Error occured");
