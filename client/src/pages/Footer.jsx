@@ -23,8 +23,18 @@ const Footer = () => {
 					</h2>
 					<ul class="text-gray-600 dark:text-gray-400">
 						<li class="mb-4">
-							<a href="#" class="hover:underline">
+							<a href="#/" class="hover:underline">
 								E-Sewa
+							</a>
+						</li>
+						<li class="mb-4">
+							<a href="#/" class="hover:underline">
+								Khalti
+							</a>
+						</li>
+						<li class="mb-4">
+							<a href="#/" class="hover:underline">
+								Khalti
 							</a>
 						</li>
 					</ul>

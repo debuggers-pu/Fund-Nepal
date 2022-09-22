@@ -26,6 +26,7 @@ const Services = () => {
 						<img
 							src={`http://localhost:5000/${data.image.split("\\")[1]}`}
 							alt="services2"
+							className="object-cover h-[300px] w-full"
 						/>
 						<div className="p-5">
 							<h3 className="text-2xl font-bold text-green-800 py-2">
