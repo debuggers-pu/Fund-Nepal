@@ -1,6 +1,33 @@
 import React from "react";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 
 const PostDescription = () => {
+  const [amount, setAmount] = useState(0);
+  const { id } = useParams();
+  const makePayment = async (token) => {
+    const body = {
+      token,
+      amount,
+      postid: id,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    return await fetch(`http://localhost:5000/api/payment`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        console.log("RESPONSE ", response);
+        const { status } = response;
+        console.log("STATUS ", status);
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="text-gray-600 body-font">
       <div className="max-w-screen-md px-4 py-6 mx-auto my-5 border-2">
@@ -17,9 +44,22 @@ const PostDescription = () => {
             reduction for drug users, who are in the process of recovery.
           </p>
           <div className="flex mt-4 ">
-            <button className="inline-flex border-0 py-5 px-4 text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400">
-              Donate Now
-            </button>
+            <input
+              type="number"
+              placeholder="Enter the amount to donate."
+              className="rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none bg-gray-50 text-sm mb-2"
+              onChange={(e) => setAmount(e.target.value)}
+            />
+            <StripeCheckout
+              stripeKey="pk_test_51LkplHClMuxIph6nBNLFwd1ocWAKDpFS61mXEH2oPd61SRHQ5iakVbug9Ihg0InZXKsVp1SAFyrHSiKxRQ9UDRum00rLdQH36O"
+              token={makePayment}
+              name="Donate Now"
+              amount={amount * 100}
+            >
+              <button className="inline-flex border-0 py-5 px-4 text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-blue-400 ">
+                Donate Now
+              </button>
+            </StripeCheckout>
           </div>
         </div>
       </div>
@@ -75,11 +115,11 @@ const PostDescription = () => {
       <div className="p-5">
         <div className="max-w-screen-md px-4 py-6 mx-auto border-2">
           <div className="bg-white p-5 modal__content rounded">
-          <img
-                  src="https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg"
-                  alt=""
-                  className="w-6 rounded-full absolute pin-l pin-t ml-2 mt-2"
-                /> 
+            <img
+              src="https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg"
+              alt=""
+              className="w-6 rounded-full absolute pin-l pin-t ml-2 mt-2"
+            />
             <div className="modal__header mb-4">
               <div className="p-2 rounded-full bg-purple-lightest inline-block">
                 <i className="fas fa-comments text-2xl text-purple-dark"></i>
@@ -102,7 +142,7 @@ const PostDescription = () => {
             </div>
             <div className="modal__footer mt-6">
               <div className="text-right">
-              <button className="border-2 border-purple p-3  text-center text-white transition-colors duration-200 transform bg-red-700 rounded-md">
+                <button className="border-2 border-purple p-3  text-center text-white transition-colors duration-200 transform bg-red-700 rounded-md">
                   Cancel
                 </button>
                 <button className="border-2 border-purple p-3  text-center text-white transition-colors duration-200 transform bg-green-500 rounded-md">
