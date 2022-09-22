@@ -20,7 +20,7 @@ const Navbar = () => {
   };
   return (
     <div className="flex justify-between items-center bg-green-500 text-white py-2 px-10 ">
-      <h1 className="font-bold text-xl ">Fund Nepal</h1>
+      <a href="/"><h1 className="font-bold text-xl ">Fund Nepal</h1></a>
       <Searchbox />
       {isAuthenticated === true ? (
         <div className="flex items-center space-x-2">

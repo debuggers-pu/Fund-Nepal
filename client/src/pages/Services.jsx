@@ -13,8 +13,6 @@ const Services = () => {
 			}
 		};
 		getposts();
-
-		return () => {};
 	}, []);
 
 	return (
@@ -25,6 +23,7 @@ const Services = () => {
 					<div className="border-2 rounded-lg bg-gray-100 mr-5 mt-5 mb-5 ">
 						<img
 							src={`http://localhost:5000/${data.image.split("\\")[1]}`}
+							className="object-cover h-[300px] w-full"
 							alt="services2"
 						/>
 						<div className="p-5">
