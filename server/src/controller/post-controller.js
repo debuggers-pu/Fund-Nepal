@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const { response } = require("express");
 
 class PostController {
+	//Adding post
 	async addpost(req, res) {
 		try {
 			const {
@@ -37,6 +38,18 @@ class PostController {
 			const SavedPost = await _post.save();
 			res.json(SavedPost);
 			console.log(SavedPost);
+		} catch (error) {
+			console.error(error.message);
+			res.status(500).send("Some Error occured");
+		}
+	}
+
+	//TO retrive all posts
+
+	async getpost(req, res) {
+		try {
+			const posts = await Post.find();
+			res.json(posts);
 		} catch (error) {
 			console.error(error.message);
 			res.status(500).send("Some Error occured");
