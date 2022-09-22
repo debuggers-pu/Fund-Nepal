@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
+import { getpostByid } from "../axios";
 
 const PostDescription = () => {
 	const [amount, setAmount] = useState(0);
+	const [detail,setDetail] = useState([]);
 	const { id } = useParams();
+	useEffect(()=> {
+		const getDetails = async ()=> {
+			const details = await getpostByid({id : id});
+			if(details){
+				setDetail(details.data)
+				console.log(details.data)
+			}
+		}
+		getDetails()
+	},[])
 	const makePayment = async token => {
 		const body = {
 			token,
@@ -32,16 +44,11 @@ const PostDescription = () => {
 		<div className="text-gray-600 body-font">
 			<div className="max-w-screen-md px-4 py-6 mx-auto my-5 border-2">
 				<h1 className="text-3xl text-gray-900 font-medium title-font mb-2">
-					MAYA NEPAL
+					{detail.title}
 				</h1>
 				<div className="w-3/5 pl-6">
 					<p className="text-gray-500  font-medium title-font mb-6">
-						Maya nepal is an organisation, operating since 2062/11/29, that
-						works in the sector of 'Drugs and Alcohol'. They are basically
-						running a rehabilitation centre for drug users and alcoholics, a
-						community care centre for the victims of drug addiction and also a
-						referral for people infected with HIV/Aids, Hepatitis, and harm
-						reduction for drug users, who are in the process of recovery.
+						{detail.description}
 					</p>
 					<div className="flex mt-4 ">
 						<input

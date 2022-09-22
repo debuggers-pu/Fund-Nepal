@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const Footer = () => {
 	return (
 		<footer class="p-4 bg-white sm:p-6 dark:bg-gray-900">
@@ -32,11 +33,6 @@ const Footer = () => {
 								Khalti
 							</a>
 						</li>
-						<li class="mb-4">
-							<a href="#/" class="hover:underline">
-								Khalti
-							</a>
-						</li>
 					</ul>
 				</div>
 				<div>
@@ -45,7 +41,7 @@ const Footer = () => {
 					</h2>
 					<ul class="text-gray-600 dark:text-gray-400">
 						<li class="mb-4">
-							<a href="#" class="hover:underline">
+							<a href="./AboutUs.jsx" class="hover:underline">
 								About Us
 							</a>
 						</li>
