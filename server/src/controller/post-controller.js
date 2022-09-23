@@ -46,5 +46,18 @@ class PostController {
       res.status(500).send("Some Error occured");
     }
   }
+
+  async getpostbyid(req, res) {
+    try {
+      const { id } = req.body;
+      const post = await Post.findOne({ _id: id });
+      if (post) {
+        res.status(200).json({ post });
+      }
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Some Error occured");
+    }
+  }
 }
 module.exports = new PostController();

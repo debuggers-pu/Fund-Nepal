@@ -29,9 +29,19 @@ router.post("/payment", (req, res) => {
     })
     .then((result) => {
       res.status(200).json(result);
-      Post.findOne({ _id: postid })
-        .then((project) => {
-          project.amountCollected = project.amountCollected + parseInt(amount);
+      Post.findOneAndUpdate(
+        {
+          _id: postid,
+        },
+        {
+          amountCollected: amountCollected + parseInt(amount),
+        },
+        {
+          upsert: true,
+          new: true,
+        }
+      )
+        .then(() => {
           return res.status(201).json({ result });
         })
         .catch((err) => {
