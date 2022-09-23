@@ -35,6 +35,7 @@ const PostDescription = () => {
       const post = await getpostbyid({ id: id });
       setPost(post.data);
     };
+    getPost();
   }, []);
 
   return (

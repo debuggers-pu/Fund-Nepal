@@ -6,52 +6,54 @@ import { setAuthenticated, setUser } from "../redux/slices/authSlice";
 import { setPostModal } from "../redux/slices/modalSlice";
 
 const Navbar = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isauthenticated);
-  const image = useSelector((state) => state.auth.user.user.profilepic);
-  const dispatch = useDispatch();
-  const onClick = () => {
-    dispatch(setUser());
-    dispatch(setAuthenticated(false));
-  };
+	const isAuthenticated = useSelector(state => state.auth.isauthenticated);
+	const image = useSelector(state => state.auth.user.user.profilepic);
+	const dispatch = useDispatch();
+	const onClick = () => {
+		dispatch(setUser());
+		dispatch(setAuthenticated(false));
+	};
 
-  const onCreatepost = (e) => {
-    e.preventDefault();
-    dispatch(setPostModal(true));
-  };
-  return (
-    <div className="flex justify-between items-center bg-green-500 text-white py-2 px-10 ">
-      <a href="/"><h1 className="font-bold text-xl ">Fund Nepal</h1></a>
-      <Searchbox />
-      {isAuthenticated === true ? (
-        <div className="flex items-center space-x-2">
-          <button
-            className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none"
-            onClick={onCreatepost}
-          >
-            Create Post
-          </button>
-          <NavLink to="/">
-            <button
-              className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none"
-              onClick={onClick}
-            >
-              Logout
-            </button>
-          </NavLink>
-          <img
-            src={`http://localhost:5000/${image.split("\\")[1]}`}
-            className="h-8 w-8 rounded-full"
-          />
-        </div>
-      ) : (
-        <NavLink to="/auth/login">
-          <button className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none">
-            Login
-          </button>
-        </NavLink>
-      )}
-    </div>
-  );
+	const onCreatepost = e => {
+		e.preventDefault();
+		dispatch(setPostModal(true));
+	};
+	return (
+		<div className="flex justify-between items-center bg-green-500 text-white py-2 px-10 ">
+			<a href="/">
+				<h1 className="font-bold text-xl ">Fund Nepal</h1>
+			</a>
+			<Searchbox />
+			{isAuthenticated === true ? (
+				<div className="flex items-center space-x-2">
+					<button
+						className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none"
+						onClick={onCreatepost}
+					>
+						Create Post
+					</button>
+					<NavLink to="/">
+						<button
+							className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none"
+							onClick={onClick}
+						>
+							Logout
+						</button>
+					</NavLink>
+					<img
+						src={`http://localhost:5000/${image.split("\\")[1]}`}
+						className="h-8 w-8 rounded-full"
+					/>
+				</div>
+			) : (
+				<NavLink to="/auth/login">
+					<button className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none">
+						Login
+					</button>
+				</NavLink>
+			)}
+		</div>
+	);
 };
 
 export default Navbar;

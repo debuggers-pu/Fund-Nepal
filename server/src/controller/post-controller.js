@@ -4,8 +4,16 @@ class PostController {
   //Adding post
   async addpost(req, res) {
     try {
-      const { userid, title, description, category, amount, comment, likes } =
-        req.body;
+      const {
+        userid,
+        title,
+        description,
+        category,
+        amount,
+        comment,
+        likes,
+        amountCollected,
+      } = req.body;
       const image = req.file?.path;
       const _post = new Post({
         title,
