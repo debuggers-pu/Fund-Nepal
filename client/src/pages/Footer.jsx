@@ -1,12 +1,12 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
 	return (
 		<footer class="p-4 bg-white sm:p-6 dark:bg-gray-900">
 			<div class="flex justify-between">
 				<div class="mb-6 md:mb-0">
-					<a href="#" class="flex items-center">
+					<a href="#/" class="flex items-center">
 						<img
 							src="https://flowbite.com/docs/images/logo.svg"
 							class="mr-3 h-8"
@@ -41,17 +41,17 @@ const Footer = () => {
 					</h2>
 					<ul class="text-gray-600 dark:text-gray-400">
 						<li class="mb-4">
-							<a href="./AboutUs.jsx" class="hover:underline">
+							<NavLink to="./about-us" class="hover:underline">
 								About Us
-							</a>
+							</NavLink>
 						</li>
 						<li class="mb-4">
-							<a href="#" class="hover:underline">
+							<a href="how-it-works" class="hover:underline">
 								How It Works
 							</a>
 						</li>
 						<li class="mb-4">
-							<a href="#" class="hover:underline">
+							<a href="#/" class="hover:underline">
 								FAQs
 							</a>
 						</li>
@@ -97,7 +97,7 @@ const Footer = () => {
 			<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 			<span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
 				© 2022{" "}
-				<a href="#" class="hover:underline">
+				<a href="#/" class="hover:underline">
 					FundNepal™
 				</a>
 				. All Rights Reserved.
