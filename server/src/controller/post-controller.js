@@ -55,14 +55,13 @@ class PostController {
     }
   }
 
-  async getPostById(req, res) {
-    const { id } = req.body;
+  async getpostbyid(req, res) {
     try {
-      const post = await Post.findById(id);
-      res.status(200),
-        json({
-          post,
-        });
+      const { id } = req.body;
+      const post = await Post.findOne({ _id: id });
+      if (post) {
+        res.status(200).json({ post });
+      }
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Some Error occured");
