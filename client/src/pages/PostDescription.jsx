@@ -33,18 +33,24 @@ const PostDescription = () => {
 	useEffect(() => {
 		const getPost = async () => {
 			const post = await getpostbyid({ id: id });
-			setPost(post.data);
-			console.log(post.data);
+			if (post) {
+				setPost(post.data.post);
+			}
 		};
 		getPost();
 	}, []);
 
-	return (
+	return post ? (
 		<div className="text-gray-600 body-font">
 			<div className="max-w-screen-md px-4 py-6 mx-auto my-5 border-2">
 				<h1 className="text-3xl text-gray-900 font-medium title-font mb-2">
 					{post.title}
 				</h1>
+				<img
+					src={`http://localhost:5000/${post.image.split("\\")[1]}` || ""}
+					alt="services2"
+					className="object-cover w-full"
+				/>
 				<div className="w-3/5 pl-6">
 					<p className="text-gray-500  font-medium title-font mb-6">
 						{post.description}
@@ -57,7 +63,7 @@ const PostDescription = () => {
 							onChange={e => setAmount(e.target.value)}
 						/>
 						<StripeCheckout
-							stripeKey="pk_test_51LkplHClMuxIph6nBNLFwd1ocWAKDpFS61mXEH2oPd61SRHQ5iakVbug9Ihg0InZXKsVp1SAFyrHSiKxRQ9UDRum00rLdQH36O"
+							stripeKey="pk_test_51LkrgoSFgx4gzLZVXoWjL4ZKFQFC8GeMkvZaaBY1wne0PhCBBuTLjxmBr8AckotVKbCjktlUgU4WhOVxuuJHmjPi00gr2KEpKC"
 							token={makePayment}
 							name="Donate Now"
 							amount={amount * 100}
@@ -160,6 +166,8 @@ const PostDescription = () => {
 				</div>
 			</div>
 		</div>
+	) : (
+		<p>Loading</p>
 	);
 };
 

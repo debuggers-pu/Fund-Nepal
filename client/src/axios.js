@@ -41,7 +41,7 @@ export const addpost = async data =>
 export const getpost = async () => api.get("post/getpost");
 
 export const getpostbyid = async data =>
-	api.post("post/getpostbyid", data, {
+	api.post("post/getpostby-id", data, {
 		headers: {
 			"Content-type": "application/json",
 		},
