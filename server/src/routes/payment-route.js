@@ -28,7 +28,30 @@ router.post("/payment", (req, res) => {
       );
     })
     .then((result) => {
-      res.status(200).json(result);
+      res
+        .status(200)
+        .json(result)
+        .then(() => {
+          Post.findOneAndUpdate(
+            {
+              _id: postid,
+            },
+            {
+              amountCollected: amountCollected + parseInt(amount),
+            },
+            {
+              upsert: true,
+              new: true,
+            }
+          );
+          return res.status(201).json({ result });
+        })
+        .catch((err) => {
+          return res.status(404).json({ error: "User not found" });
+        });
+    })
+    .catch((err) => {
+      console.log(err);
       Post.findOneAndUpdate(
         {
           _id: postid,
@@ -40,15 +63,8 @@ router.post("/payment", (req, res) => {
           upsert: true,
           new: true,
         }
-      )
-        .then(() => {
-          return res.status(201).json({ result });
-        })
-        .catch((err) => {
-          return res.status(404).json({ error: "User not found" });
-        });
-    })
-    .catch((err) => console.log(err));
+      );
+    });
 });
 
 module.exports = router;
