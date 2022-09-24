@@ -75,7 +75,7 @@ const PostDescription = () => {
 							name="Donate Now"
 							amount={amount * 100}
 						>
-							<button className="inline-block w-full mt-4 px-5 py-4 font-semibold text-center text-white transition-colors duration-200 transform bg-cyan[#38bdf8] rounded-md hover:bg-blue-400">
+							<button className="inline-block w-full mt-4 px-5 py-4 font-semibold text-center text-white transition-colors duration-200 transform bg-[#38bdf8] rounded-md hover:bg-blue-400">
 								Donate Now
 							</button>
 						</StripeCheckout>
