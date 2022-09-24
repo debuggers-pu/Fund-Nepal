@@ -19,7 +19,7 @@ const Navbar = () => {
 		dispatch(setPostModal(true));
 	};
 	return (
-		<div className="flex justify-between items-center bg-green-500 text-white py-2 px-10 ">
+		<div className="flex justify-between items-center bg-gray-700 text-white py-4 px-10 ">
 			<a href="/">
 				<h1 className="font-bold text-xl ">Fund Nepal</h1>
 			</a>
@@ -27,14 +27,14 @@ const Navbar = () => {
 			{isAuthenticated === true ? (
 				<div className="flex items-center space-x-2">
 					<button
-						className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none"
+						className="inline-block w-full px-5 py-3 font-semibold text-center text-white transition-colors duration-200 transform bg-[#38bdf8] rounded-md hover:bg-blue-400"
 						onClick={onCreatepost}
 					>
 						Create Post
 					</button>
 					<NavLink to="/">
 						<button
-							className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none"
+							className="inline-block w-full px-5 py-3 font-semibold text-center text-white transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-800"
 							onClick={onClick}
 						>
 							Logout
@@ -47,7 +47,7 @@ const Navbar = () => {
 				</div>
 			) : (
 				<NavLink to="/auth/login">
-					<button className="px-4 py-2 bg-white text-primaryColor hover:opacity-75 rounded-sm border-none">
+					<button className="inline-block w-full px-5 py-3 font-semibold text-center text-white transition-colors duration-200 transform bg-cyan-600 rounded-md hover:bg-blue-400">
 						Login
 					</button>
 				</NavLink>
