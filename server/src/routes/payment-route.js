@@ -26,6 +26,18 @@ router.post("/payment", (req, res) => {
         },
         { idempontencyKey }
       );
+      Post.findOneAndUpdate(
+        {
+          _id: postid,
+        },
+        {
+          amountCollected: amountCollected + parseInt(amount),
+        },
+        {
+          upsert: true,
+          new: true,
+        }
+      );
     })
     .then((result) => {
       res
