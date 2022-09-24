@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import { getpostbyid } from "../axios";
+import Moment from "moment";
 
 const PostDescription = () => {
 	const [amount, setAmount] = useState(0);
@@ -51,10 +52,11 @@ const PostDescription = () => {
 					alt="services2"
 					className="object-cover w-full"
 				/>
-				<div className="w-3/5 pl-6">
+				<div className="pl-6">
 					<p className="text-gray-500  font-medium title-font mb-6">
 						{post.description}
 					</p>
+
 					<div className="flex mt-4 ">
 						<input
 							type="number"
@@ -72,6 +74,20 @@ const PostDescription = () => {
 								Donate Now
 							</button>
 						</StripeCheckout>
+					</div>
+					<div className="flex justify-between items-center my-2 ">
+						<p className="mt-2 mx-3">
+							Total Donation:
+							<span className="text-xls font-semibold">
+								{post.amountCollected}$
+							</span>
+						</p>
+						<p className="mt-2 mx-3">
+							{" "}
+							Pleged:
+							<span className="text-xls font-semibold ">{post.amount}$</span>
+						</p>
+						<p>Created At: {Moment(post.createdAt).format("YYYY/MM/DD")}</p>
 					</div>
 				</div>
 			</div>
