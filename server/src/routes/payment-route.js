@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Post = require("../model/post-model");
 
 const stripe = require("stripe")(
-	"sk_test_51LkrgoSFgx4gzLZV3uJxt0LMfzCzhzJYufdsLBAbUliFbRdU76DhFfsxbY4idTz1Hqhg4U3cv4bNWux2oQTpgulG00zKMatJhEs"
+	"sk_test_51LkrgoSFgx4gzLZV3uJxt0LMfzCzhzJYufdsLBAbUliFbRdU76DhFfsxbY4idTz1Hqhg4U3cv4bNWux2oQTpgulG00zKMatJhE"
 );
 const { v4: uuidv4 } = require("uuid");
 

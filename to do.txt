@@ -1,14 +1,17 @@
-
-5.card to page
-
-
-
 6.amount increase after donation
 
-total compagn and donated
+//5.card to page//
+
+
+
+
+
+//total compagn and donated//
 
 category wise chuttauni
 category photo
 
 card ko button tyo footer ma matra huni 
 nepali language wala slang
+category thaping
+post exprire
