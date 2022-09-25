@@ -32,8 +32,8 @@ const PostDescription = () => {
 			.catch(error => console.log(error));
 	};
 
-	const onClick = () => {
-		axios.post(`http://localhost:5000/api/pay/pay`, {
+	const onClick = async () => {
+		await axios.post(`http://localhost:5000/api/pay/pay`, {
 			postid: id,
 			amount,
 		});
@@ -77,19 +77,18 @@ const PostDescription = () => {
 							onChange={e => setAmount(e.target.value)}
 							min="0"
 						/>
-						<StripeCheckout
-							stripeKey="pk_test_51LkrgoSFgx4gzLZVXoWjL4ZKFQFC8GeMkvZaaBY1wne0PhCBBuTLjxmBr8AckotVKbCjktlUgU4WhOVxuuJHmjPi00gr2KEpKC"
-							token={makePayment}
-							name="Donate Now"
-							amount={amount * 100}
-						>
-							<button
-								className="inline-block w-full mt-4 px-5 py-4 font-semibold text-center text-white transition-colors duration-200 transform bg-[#38bdf8] rounded-md hover:bg-blue-400"
-								onCLick={onClick}
+						<div onClick={onClick}>
+							<StripeCheckout
+								stripeKey="pk_test_51LkrgoSFgx4gzLZVXoWjL4ZKFQFC8GeMkvZaaBY1wne0PhCBBuTLjxmBr8AckotVKbCjktlUgU4WhOVxuuJHmjPi00gr2KEpKC"
+								token={makePayment}
+								name="Donate Now"
+								amount={amount * 100}
 							>
-								Donate Now
-							</button>
-						</StripeCheckout>
+								<button className="inline-block w-full mt-4 px-5 py-4 font-semibold text-center text-white transition-colors duration-200 transform bg-[#38bdf8] rounded-md hover:bg-blue-400">
+									Donate Now
+								</button>
+							</StripeCheckout>
+						</div>
 					</div>
 					<div className="flex flex-col items-center my-2 ">
 						<p className="mt-2 mx-3 text-xl">

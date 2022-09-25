@@ -16,11 +16,6 @@ router.post("/payment", (req, res) => {
 			source: token.id,
 		})
 		.then(customer => {
-			console.log("i am here");
-			Post.findOne({ _id: postid }).then(project => {
-				console.log("dsadasd");
-				project.amountCollected = project.amountCollected + parseInt(amount);
-			});
 			stripe.charges.create(
 				{
 					amount: amount * 100,
@@ -29,27 +24,42 @@ router.post("/payment", (req, res) => {
 					receipt_email: token.email,
 					description: `purchase of ${postid}`,
 				},
-				{ idempontencyKey: idempontencyKey }
+				{ idempontencyKey }
 			);
 		})
 		.then(result => {
-			console.log("ainside pay");
-			console.log(postid);
-			res.status(200).json(result);
-			Post.findOne({ _id: postid })
-				.then(project => {
-					console.log("dsadasd");
-					project.amountCollected = project.amountCollected + parseInt(amount);
-
-					return res.status(201).json({ result });
-				})
+			res
+				.status(200)
+				.json(result)
+				// Post.findOneAndUpdate(
+				// 	{
+				// 		_id: postid,
+				// 	},
+				// 	{
+				// 		amountCollected: parseInt(amount),
+				// 	},
+				// 	{
+				// 		upsert: true,
+				// 		new: true,
+				// 	}
+				// )
 				.catch(err => {
-					console.log(err);
+					return res.status(404).json({ error: "User not found" });
 				});
 		})
-		.catch(err => {
-			console.log(err);
-		});
+		.catch(err => console.log(err));
+});
+
+router.post("/pay", async (req, res) => {
+	const { amount, postid } = req.body;
+	await Post.findOneAndUpdate(
+		{ _id: postid },
+		{ amountCollected: amount },
+		{ upsert: true, useFindAndModify: false, new: true }
+	);
+	res.status(200).json({
+		message: "Payment Successfull",
+	});
 });
 
 module.exports = router;
