@@ -47,18 +47,6 @@ router.post("/payment", (req, res) => {
           return res.status(201).json({ result });
         })
         .catch((err) => {
-          Post.findOneAndUpdate(
-            {
-              _id: postid,
-            },
-            {
-              amountCollected: amountCollected + parseInt(amount),
-            },
-            {
-              upsert: true,
-              new: true,
-            }
-          );
           return res.status(404).json({ error: "User not found" });
         });
     })

@@ -4,6 +4,7 @@ import Searchbox from "./shared/Searchbox";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthenticated, setUser } from "../redux/slices/authSlice";
 import { setPostModal } from "../redux/slices/modalSlice";
+import image12 from "../uploads/logo.png";
 
 const Navbar = () => {
 	const isAuthenticated = useSelector(state => state.auth.isauthenticated);
@@ -20,9 +21,13 @@ const Navbar = () => {
 	};
 	return (
 		<div className="flex justify-between items-center bg-gray-700 text-white py-4 px-10 ">
+	<div className="flex justify-start items-center">
+	<img src={image12} class="w-12 h-12 mr-2 bg-gray-100 rounded-full overflow-hidden shadow-lg" alt="sandesh" />
 			<a href="/">
-				<h1 className="font-bold text-xl ">Fund Nepal</h1>
+				<h1 className="font-bold text-xl left-0">Fund Nepal</h1>
 			</a>
+	</div>
+            
 			<Searchbox />
 			{isAuthenticated === true ? (
 				<div className="flex items-center space-x-2">

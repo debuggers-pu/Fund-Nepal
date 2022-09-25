@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import Footer from "./pages/Footer";
 import PostDescription from "./pages/PostDescription";
 import AboutUs from "./pages/AboutUs";
-import HowitWorks from "./pages/HowItWorks";
+import Ourteam from "./pages/Ourteam";
 
 function App() {
 	const modal = useSelector(state => state.modal.postModal);
@@ -30,7 +30,7 @@ function App() {
 				<Route path="/auth/login" element={<Login />} />
 				<Route path="/auth/signup" element={<Signup />} />
 				<Route path="/about-us" element={<AboutUs />} />
-				<Route path="/how-it-works" element={<HowitWorks />} />
+				<Route path="/ourteam" element={<Ourteam />} />
 				<Route path="/:id" element={<PostDescription />} />
 			</Routes>
 			<Footer />

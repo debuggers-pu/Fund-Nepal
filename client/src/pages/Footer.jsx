@@ -1,14 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import images2 from "../uploads/logo.png"
 
 const Footer = () => {
 	return (
-		<footer class="p-4 bg-white sm:p-6 dark:bg-gray-800">
+		<footer class="p-4 bg-white sm:p-6 dark:bg-gray-800 bottom-0">
 			<div class="flex justify-between">
 				<div class="mb-6 md:mb-0">
 					<a href="#/" class="flex items-center">
 						<img
-							src="https://flowbite.com/docs/images/logo.svg"
+							src={images2}
 							class="mr-3 h-8"
 							alt="FlowBite Logo"
 						/>
@@ -46,15 +47,11 @@ const Footer = () => {
 							</NavLink>
 						</li>
 						<li class="mb-4">
-							<a href="how-it-works" class="hover:underline">
-								How It Works
+							<a href="ourteam" class="hover:underline">
+								Team Member
 							</a>
 						</li>
-						<li class="mb-4">
-							<a href="#/" class="hover:underline">
-								FAQs
-							</a>
-						</li>
+						
 					</ul>
 				</div>
 				<div>
