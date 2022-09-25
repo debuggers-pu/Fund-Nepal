@@ -4,12 +4,13 @@ import { useParams } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 import { getpostbyid } from "../axios";
 import Moment from "moment";
+import axios from "axios";
 
 const PostDescription = () => {
 	const [amount, setAmount] = useState(0);
 	const [post, setPost] = useState("");
 	const { id } = useParams();
-	const makePayment = token => {
+	const makePayment = async token => {
 		const body = {
 			token,
 			amount,
@@ -18,18 +19,24 @@ const PostDescription = () => {
 		const headers = {
 			"Content-Type": "application/json",
 		};
-		return fetch(`http://localhost:5000/api/pay/payment`, {
+		return await fetch(`http://localhost:5000/api/pay/payment`, {
 			method: "POST",
 			headers,
 			body: JSON.stringify(body),
 		})
 			.then(response => {
-				console.log("I am right here");
 				console.log("RESPONSE ", response);
 				const { status } = response;
 				console.log("STATUS ", status);
 			})
 			.catch(error => console.log(error));
+	};
+
+	const onClick = () => {
+		axios.post(`http://localhost:5000/api/pay/pay`, {
+			postid: id,
+			amount,
+		});
 	};
 
 	useEffect(() => {
@@ -76,7 +83,10 @@ const PostDescription = () => {
 							name="Donate Now"
 							amount={amount * 100}
 						>
-							<button className="inline-block w-full mt-4 px-5 py-4 font-semibold text-center text-white transition-colors duration-200 transform bg-[#38bdf8] rounded-md hover:bg-blue-400">
+							<button
+								className="inline-block w-full mt-4 px-5 py-4 font-semibold text-center text-white transition-colors duration-200 transform bg-[#38bdf8] rounded-md hover:bg-blue-400"
+								onCLick={onClick}
+							>
 								Donate Now
 							</button>
 						</StripeCheckout>

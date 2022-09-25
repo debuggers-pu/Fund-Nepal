@@ -71,7 +71,7 @@ const Services = () => {
 				</div>
 			</div>
 
-			<div className="container max-w-full my-15 px-6 mx-auto border-2 bg-gray-100">
+			<div className="container my-15 px-6 mx-auto border-2 bg-gray-100">
 				<section className="mb-25 text-gray-800 text-center">
 					<h2 className="text-3xl font-bold mb-12 my-4">
 						NEPAL'S MOST VISITED AND TRUSTED CROWDFUNDING PLATFORM
