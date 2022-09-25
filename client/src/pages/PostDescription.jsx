@@ -9,7 +9,7 @@ const PostDescription = () => {
 	const [amount, setAmount] = useState(0);
 	const [post, setPost] = useState("");
 	const { id } = useParams();
-	const makePayment = async token => {
+	const makePayment = token => {
 		const body = {
 			token,
 			amount,
@@ -18,12 +18,13 @@ const PostDescription = () => {
 		const headers = {
 			"Content-Type": "application/json",
 		};
-		return await fetch(`http://localhost:5000/api/payment`, {
+		return fetch(`http://localhost:5000/api/pay/payment`, {
 			method: "POST",
 			headers,
 			body: JSON.stringify(body),
 		})
 			.then(response => {
+				console.log("I am right here");
 				console.log("RESPONSE ", response);
 				const { status } = response;
 				console.log("STATUS ", status);
